@@ -1,0 +1,28 @@
+.fcc-nav-bottom-btn {
+    width: 100%;
+    height: 52px;
+    line-height: normal;    
+    padding: 8px 16px;
+}
+
+.mat-grid-list {
+    margin: 8px 16px 0px 16px;
+}
+
+.big-text {
+    font-size: 72px;
+}
+
+.sign {
+    font-size: 32px;
+}
+
+.fcc-number,
+.fcc-text {    
+    align-self: center;
+    text-align: center;    
+}
+
+.mat-divider {
+    margin: 0px 8px;
+}

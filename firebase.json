@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "crisis-center-console",
+      "public": "dist/crisis-center-console",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

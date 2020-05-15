@@ -1,0 +1,86 @@
+<div *ngIf="authService.user | async as user" class="fcc-layout">
+    
+    <mat-toolbar color="primary">
+            <button mat-icon-button (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="app-name">Floc Crisis Center</div>
+            <span class="spacer"></span>
+            <button *ngIf="!mobileQuery.matches" mat-icon-button [matMenuTriggerFor]="appMenu" class="profile-btn">
+                <img *ngIf="user.photoURL; else noPic" class="profile-pic-sm" [src]="user.photoURL" />
+            </button>
+
+            <ng-template #noPic>
+                <mat-icon>account_circle</mat-icon>
+            </ng-template>
+            
+            <mat-menu #appMenu="matMenu" [overlapTrigger]="false" class="fcc-mat-menu">
+                <div class="profile">
+                    <div class="profile-pic">
+                        <img *ngIf="user.photoURL; else noPicBig" [src]="user.photoURL" />
+                    </div>
+                    <div>
+                        <span>{{user.displayName}}</span><br>
+                        <span class="email">{{user.email}}</span>
+                    </div>                    
+                </div>
+                <mat-divider></mat-divider>
+                <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
+
+            <ng-template #noPicBig>
+                <mat-icon>account_circle</mat-icon>
+            </ng-template>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="0">        
+        <mat-sidenav
+            #drawer
+            class="sidenav"
+            fixedInViewport="true"
+            [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [opened]="!mobileQuery.matches">
+      
+            <mat-toolbar *ngIf="!mobileQuery.matches" color="primary">
+                <span class="app-name">Floc Crisis Center</span>
+            </mat-toolbar>
+
+            <mat-list *ngIf="!mobileQuery.matches; else handheldNav">
+                <mat-list-item *ngFor="let adminRoute of routerService.adminRoutes.items" [ngClass]="adminRoute.css">
+                    <button mat-button
+                            (click)="adminRoute.go()"
+                            [color]="adminRoute.color"
+                            disableRipple="true"
+                            class="fcc-sidenav-button no-hover-effect">
+                        <mat-icon>{{adminRoute.icon}}</mat-icon>
+                        {{adminRoute.text}}
+                    </button>
+                </mat-list-item>
+            </mat-list>
+
+            <ng-template #handheldNav>
+                <div class="handheld-nav-profile">
+                    <div class="profile-pic">
+                        <img [src]="user.photoURL" />
+                    </div>
+                    <div class="profile-details">
+                        <span>{{user.displayName}}</span><br>
+                        <span class="email">{{user.email}}</span>
+                    </div>
+                </div>
+                <div class="handheld-nav-menu">
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="drawer.close(); logout();">Logout</button>
+                    <mat-divider></mat-divider>
+                </div>
+            </ng-template>
+
+        </mat-sidenav>
+        
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>            
+        </mat-sidenav-content>
+    </mat-sidenav-container>            
+    
+</div>

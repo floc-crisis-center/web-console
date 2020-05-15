@@ -1,0 +1,39 @@
+<div>
+    <mat-grid-list
+                [cols]="(mobileQuery.matches ? 1 : 2) || 1"
+                rowHeight="150px"
+                gutterSize="8px">
+
+        <mat-grid-tile class="mat-elevation-z4 white">
+            <div fxFlex="100%" fxLayout="column">
+                <div fxFlex="100%" class="fcc-number">
+                    <span class="sign">#</span>
+                    <span class="big-text">{{stats.botsCreated}}</span>                
+                </div>            
+                <div fxFlex class="fcc-text">Bots Created</div>                    
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="mat-elevation-z4 white">
+            <div fxFlex="100%" fxLayout="column">
+                <div fxFlex="100%" class="fcc-number">
+                    <span class="sign">#</span>
+                    <span class="big-text">{{stats.reqsPerDay}}</span>
+                </div>            
+                <div fxFlex class="fcc-text">Conversations per day</div>                    
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div *ngIf="mobileQuery.matches" class="fcc-toolbar-bottom">
+    <div *ngFor="let adminRoute of routerService.adminRoutes.items">
+        <button mat-button (click)="adminRoute.go()" [color]="adminRoute.color" class="fcc-nav-bottom-btn">
+            <mat-icon>{{adminRoute.icon}}</mat-icon>{{adminRoute.text}}
+        </button>
+    </div>
+</div>
+
+<div *ngIf="routerService.loading" class="fcc-loader">
+    <div class="fcc-loader-ring"><div></div><div></div><div></div><div></div></div>
+</div>

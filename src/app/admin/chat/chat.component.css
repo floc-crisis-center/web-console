@@ -1,0 +1,18 @@
+.msg-container {
+    padding: 8px;
+    width: 450px;
+    max-width: 450px;
+}
+
+.msg-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 16px;
+}
+
+/* Handsets small and large in portrait */
+@media (max-width: 479px) {
+    .msg-container {
+        flex: 3;
+    }
+}

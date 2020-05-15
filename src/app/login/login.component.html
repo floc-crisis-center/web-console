@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutGap="16px" class="login-container">
+    <mat-card class="login-card">
+        <div class="login-header">
+            Floc Crisis Center
+        </div>
+        <mat-card-content>
+            <button (click)="loading = true; auth.googleLogin(this);" mat-raised-button>
+                <img class="login-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" />
+                Sign in with Google
+            </button>
+            <button (click)="loading = true; auth.facebookLogin(this);" mat-raised-button color="primary">
+                <img class="login-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" />
+                Sign in with Facebook
+            </button>
+        </mat-card-content>        
+    </mat-card>
+    <div class="spacer"></div>
+    <div class="links">
+        <a href="https://floc.cloud/help" mat-button>Help</a>
+        <a href="https://floc.cloud/tos" mat-button>Terms</a>
+    </div>    
+</div>
+
+<div *ngIf="loading == true" class="fcc-loader">
+    <div class="fcc-loader-ring"><div></div><div></div><div></div><div></div></div>
+</div>

@@ -1,0 +1,29 @@
+<div class="message-box">      
+    <div *ngIf="message.text" [ngClass]="message.styleClass" [innerHTML]="message.text"></div>
+
+    <div *ngIf="message.type === 'textbox'" class="alternate-theme" [ngClass]="message.styleClass">
+      <mat-form-field class="full-width">    
+        <textarea #rspInput matInput required [formControl]="message.ctrl"></textarea>
+      </mat-form-field>
+      <button mat-raised-button (click)="parent.send()" class="submit">
+        <mat-icon>save</mat-icon>&nbsp;{{message.submitLabel}}
+      </button>
+    </div>
+
+    <div *ngIf="message.type === 'number'" class="alternate-theme" [ngClass]="message.styleClass">
+      <mat-form-field class="full-width">    
+          <input #rspInput matInput required type="number" [formControl]="message.ctrl" min="{{message.min}}" max="{{message.max}}">
+      </mat-form-field>
+      <button mat-raised-button (click)="parent.send()" class="submit">
+        <mat-icon>save</mat-icon>&nbsp;{{message.submitLabel}}
+      </button>
+    </div>
+
+    <div *ngIf="message.type === 'typing'" class="message-typing">
+      <div id="typing">
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+      </div>
+    </div>
+  </div>

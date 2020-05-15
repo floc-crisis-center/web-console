@@ -1,0 +1,61 @@
+<mat-card class="detail">
+  <mat-card-header>
+    <mat-card-title>{{bot.name}}</mat-card-title>
+    <mat-card-subtitle *ngIf="!bot.generated">Bot is empty. Click "Build" to get started</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{bot.description}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="bot.generated" mat-raised-button  (click)="testChat()" color="primary">
+      <mat-icon>question_answer</mat-icon>&nbsp;Test
+    </button>
+    <button *ngIf="bot.published" mat-raised-button color="primary">
+      <mat-icon>publish</mat-icon>&nbsp;Publish
+    </button>
+    <button *ngIf="!bot.generated" mat-raised-button (click)="loadChat()" color="primary">
+      <mat-icon>build</mat-icon>&nbsp;Build
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card *ngIf="bot.generated" class="detail">
+  <mat-card-header>
+    <mat-card-title>Summary</mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="menu">
+    <mat-list>
+      <div mat-subheader>Welcome message</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>title</mat-icon>
+        <div mat-line [innerHTML]="menu.welcome_message"></div>
+      </mat-list-item>
+      
+      <div mat-subheader>Main Menu Message</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>list</mat-icon>
+        <div mat-line [innerHTML]="menu.main_menu_message"></div>
+      </mat-list-item>
+      <div mat-subheader>Menu Options #{{menu.main_menu_options_count}}</div>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="bot.generated"  (click)="downloadBot()" mat-raised-button>
+      <mat-icon>get_app</mat-icon>&nbsp;Download
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template appChatHost></ng-template>
+
+<div *ngIf="mobileQuery.matches" class="fcc-toolbar-bottom">
+  <div *ngFor="let adminRoute of routerService.adminRoutes.items">
+      <button mat-button (click)="adminRoute.go()" [color]="adminRoute.color" class="fcc-nav-bottom-btn">
+          <mat-icon>{{adminRoute.icon}}</mat-icon>{{adminRoute.text}}
+      </button>
+  </div>
+</div>
+
+<div *ngIf="routerService.loading" class="fcc-loader">
+  <div class="fcc-loader-ring"><div></div><div></div><div></div><div></div></div>
+</div>

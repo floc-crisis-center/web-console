@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Create Bot</h1>
+<div mat-dialog-content class="alternate-theme">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="data.name" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="data.description" autocomplete="off"></textarea>
+    </mat-form-field>      
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data">Create</button>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="!mobileQuery.matches;" class="select-action">    
+    <span class="spacer"></span>
+    <div>
+        <button mat-raised-button (click)="createBot()" color="primary">
+            <mat-icon>add</mat-icon>&nbsp;Create Bot
+        </button>
+    </div>
+</div>
+
+<div class="list-container mat-elevation-z4 white"
+     [ngClass]="{ padder: mobileQuery.matches }">
+    <div class="list-title">Your Info Bots</div>
+    <mat-divider></mat-divider>
+    <div *ngIf="!bots || bots.length == 0" class="no-items">No bots were created.</div>
+    <mat-list>
+        <mat-list-item *ngFor="let bot of bots">
+            <h3 matLine class="text">
+                <a routerLink="/admin/bots/{{bot.id}}">{{bot.name}}</a>
+            </h3>            
+            <p matLine class="small-text">                
+                <span>{{bot.description}}</span>              
+            </p>
+        </mat-list-item>        
+    </mat-list>
+</div>
+
+<button *ngIf="mobileQuery.matches" mat-mini-fab color="primary" class="fixed-bottom-1" (click)="createBot()">
+    <mat-icon>add</mat-icon>
+</button>
+
+<div *ngIf="mobileQuery.matches" class="fcc-toolbar-bottom">
+    <div *ngFor="let adminRoute of routerService.adminRoutes.items">
+        <button mat-button (click)="adminRoute.go()" [color]="adminRoute.color" class="fcc-nav-bottom-btn">
+            <mat-icon>{{adminRoute.icon}}</mat-icon>{{adminRoute.text}}
+        </button>
+    </div>
+</div>
+
+<div *ngIf="routerService.loading" class="fcc-loader">
+    <div class="fcc-loader-ring"><div></div><div></div><div></div><div></div></div>
+</div>

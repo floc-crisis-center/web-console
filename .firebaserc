@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "floc-chat": {
+      "hosting": {
+        "crisis-center-console": [
+          "floc-chat"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+.mat-toolbar.mat-primary {
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.2); 
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 56px;
+}
+  
+.mat-drawer {
+    min-width: 280px;
+}
+
+.mat-drawer-container {
+    flex: 1;
+    background: #fff;
+}
+
+.mat-drawer-content {
+    display: flex;
+}
+
+.app-name {
+    margin-left: 4px;
+}
+
+.profile-btn {
+    height: 30px;
+    width: 30px;
+}
+
+.profile-pic-sm {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: block;
+    object-fit: cover;
+}
+
+.profile {
+    height: 84px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px 0px 8px;    
+    background: #ffee58;
+    color: #442B2B;
+}
+
+.profile-pic {
+    margin-right: 16px;
+}
+
+.profile-details {
+    margin-top: 16px;
+}
+
+.profile-pic img {
+    height: 74px;
+    width: 74px;
+    border-radius: 50%;
+}
+
+.profile-pic mat-icon {
+    height: 74px;
+    width: 74px;
+    font-size: 74px;
+}
+
+.email {
+    font-size: 14px;
+    color: rgba(68, 43, 43, 0.6);
+}
+
+.fcc-sidenav-button {
+    width: 200px;
+    text-align: left;
+}
+
+.fcc-layout {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+
+
+.mat-drawer-side {
+    border: 0px none;
+}
+
+.handheld-nav-profile {
+    padding: 16px;
+    background: #ffee58;
+    color: #442B2B;
+}
+
+.mat-list .mat-list-item {
+    height: 36px;
+}
+
+.nav-menu-selected-item {
+    background: rgba(249, 168, 37, 0.2);
+    border-bottom-right-radius: 24px;
+    border-top-right-radius: 24px;
+}
