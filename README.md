@@ -1,6 +1,8 @@
 # Crisis Center Console
 This is the web console that provides a bot builder to create and download Rasa based infobots.
 
+![Demo](fcc.gif)
+
 > Angular firebase is used for authentication. Replace the firebase config environment variable with the appropriate values.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
